@@ -7,4 +7,5 @@
 </p>
 <h3>Can I get a <em>Royal Flush</em>?</h3>
 
-adding myself to the readme - anthony
+<h2>GOATED POKER GAME
+adding myself to the readme - anthony</h2>
