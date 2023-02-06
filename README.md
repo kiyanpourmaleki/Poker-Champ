@@ -9,3 +9,5 @@
 
 <h2>GOATED POKER GAME
 adding myself to the readme - anthony</h2>
+<h2>You've got to know when to hold 'em</h2>
+<h2>Know when to fold 'em</h2>
