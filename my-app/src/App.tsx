@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TextField from '@mui/material/TextField';
-import { useAutocomplete } from '@mui/base';
 import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
 
 
 function LandingPage(props: any) {
@@ -32,10 +31,10 @@ function LandingPage(props: any) {
   }
 
   return (
-    <div className="App">
+    <div className="backgroundImage">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-                
+        <Typography variant="h4" color="black">WELCOME TO</Typography>
+        <Typography variant="h1" color="black">POKER CHAMP</Typography>
         <TextField 
           sx={{ m: 2 }}
           id="outlined-basic"
@@ -58,7 +57,7 @@ function LandingPage(props: any) {
             Start New Game</Button>
         
       </header>
-    </div>
+    </div>    
   );
 }
 
