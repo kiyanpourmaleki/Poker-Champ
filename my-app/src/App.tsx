@@ -3,7 +3,7 @@ import './App.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
-import { Link } from '@mui/material';
+import { Link } from 'react-router-dom';
 import NewPage from './NewPage'
 import { render, screen } from '@testing-library/react';
 
@@ -53,12 +53,13 @@ function LandingPage(props: any) {
             size="large">
             Join Game</Button>
           <Typography variant="subtitle1" color="black">--------or--------</Typography>
+          <Link to="./NewPage.tsx">
           <Button 
             sx={{ m: 2 }}
             onClick={isNewGame}
             variant="contained"
             size="large">
-            Start New Game</Button>
+            Start New Game</Button></Link>
       </header>
     </div>    
   );
