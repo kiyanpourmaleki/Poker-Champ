@@ -3,6 +3,9 @@ import './App.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
+import { Link } from '@mui/material';
+import NewPage from './NewPage'
+import { render, screen } from '@testing-library/react';
 
 function LandingPage(props: any) {
   const [ name, setName] = useState("")
@@ -12,6 +15,9 @@ function LandingPage(props: any) {
 
   const isNewGame = () => {
       setNewGame(newGame);
+      render (<NewPage />);
+      const linkElement = screen.getByText(/learn react/i);
+      expect(linkElement).toBeInTheDocument();
   }
 
   const joinGame = () => {
