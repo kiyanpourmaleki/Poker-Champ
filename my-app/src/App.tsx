@@ -1,10 +1,11 @@
-import React, {useEffect, useState, Component} from 'react';
+import React, {useEffect, useState } from 'react';
 import './App.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-function LandingPage(props: any) {
+export default function LandingPage(props: any) {
   const [ name, setName] = useState("")
   const [ gamecode, setGameCode] = useState("")
   const [ newGame, setNewGame ] = useState("");
@@ -47,15 +48,14 @@ function LandingPage(props: any) {
             size="large">
             Join Game</Button>
           <Typography variant="subtitle1" color="black">--------or--------</Typography>
-          <Button 
+          <Link to={`NewPage`}>
+          <Button
             sx={{ m: 2 }}
             onClick={isNewGame}
             variant="contained"
             size="large">
-            Start New Game</Button>
+            Start New Game</Button></Link>
       </header>
     </div>    
   );
 }
-
-export default LandingPage;
