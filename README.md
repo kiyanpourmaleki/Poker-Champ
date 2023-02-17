@@ -8,3 +8,5 @@
 <h3>Can I get a <em>Royal Flush</em></h3>
 
 <h2>GOATED POKER GAME</h2>
+<h2>You've got to know when to hold 'em</h2>
+<h2>Know when to fold 'em</h2>
