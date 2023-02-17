@@ -1,4 +1,4 @@
-import '../App.css';
+import '../index.css';
 import { Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
