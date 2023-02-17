@@ -18,6 +18,15 @@
   position:fixed;
   background-size: cover;
 }
+
+.backgroundImage2 { 
+  background-image: url("./poker_table.jpg");
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  position:fixed;
+  background-size: cover;
+}
 .App-header {
   text-align: center;
   min-height: 100vh;
