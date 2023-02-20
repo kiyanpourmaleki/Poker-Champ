@@ -48,7 +48,7 @@ export default function LandingPage(props: any) {
             size="large">
             Join Game</Button>
           <Typography variant="subtitle1" color="black">--------or--------</Typography>
-          <Link to={`NewPage`}>
+          <Link to={`NewGame`}>
           <Button
             sx={{ m: 2 }}
             onClick={isNewGame}
