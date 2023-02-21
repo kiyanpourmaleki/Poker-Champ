@@ -41,12 +41,13 @@ export default function LandingPage(props: any) {
             name="gamecode"
             onChange={e => setGameCode(e.target.value)} 
           />
+          <Link to={'JoinGame'}>
           <Button 
             sx={{ m: 2 }}
             onClick={joinGame}
             variant="contained"
             size="large">
-            Join Game</Button>
+            Join Game</Button></Link>
           <Typography variant="subtitle1" color="black">--------or--------</Typography>
           <Link to={`NewGame`}>
           <Button
