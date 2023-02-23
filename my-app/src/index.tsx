@@ -6,8 +6,9 @@ import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
-import LandingPage from "./App";
-import DisplayNewPage from './routes/NewPage';
+import LandingPage from "./routes/LandingPage/App";
+import DisplayNewGame from './routes/NewGame/NewGame';
+import DisplayJoinGame from './routes/JoinGame/JoinGame';
 
 const router = createBrowserRouter([
   {
@@ -15,8 +16,12 @@ const router = createBrowserRouter([
     element: <LandingPage />,
   },
   {
-    path: "NewPage",
-    element: <DisplayNewPage />,
+    path: "NewGame",
+    element: <DisplayNewGame />,
+  },
+  {
+    path: "JoinGame",
+    element: <DisplayJoinGame />
   },
 ]);
 

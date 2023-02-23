@@ -1,4 +1,4 @@
-import '../App.css';
+import './NewGame.css';
 import { Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import * as React from 'react';
@@ -25,12 +25,12 @@ function GoBack(){
     );
 }
 
-export default function DisplayNewPage() {
+export default function DisplayNewGame() {
     return(
         <div className="backgroundImage2">
             <header className="New-Game-Header">
-                <Typography variant="h3" color="white
-                ">New Game!</Typography>
+                <Typography variant="h3" color="white">
+                    New Game!</Typography>
                 <GoBack />
             </header>
 
