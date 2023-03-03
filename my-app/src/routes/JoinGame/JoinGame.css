@@ -5,14 +5,6 @@
     position:fixed;
 }
 
-.New-Game-Header {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .table{
     background-image: url("./poker_table.jpg");
     background-repeat: no-repeat;
@@ -21,4 +13,9 @@
     position:fixed;
     background-position: center top;
     background-size: 100%;
+}
+
+.test{
+    font-size: 20pt;
+    color: white;
 }
