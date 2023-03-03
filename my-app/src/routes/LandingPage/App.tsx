@@ -17,7 +17,7 @@ export default function LandingPage(props: any) {
 
   const joinGame = () => {
       setExistingGame(existingGame)
-      alert(`Name:${name} \nGamecode: ${gamecode}`)
+      alert(`Name: ${name} \nGamecode: ${gamecode}`)
   }
 
   return (
@@ -31,7 +31,7 @@ export default function LandingPage(props: any) {
             label="Name"
             variant="outlined"
             name="name"
-            onChange={e => setGameCode(e.target.value)} 
+            onChange={e => setName(e.target.value)} 
           />
           <TextField
             sx={{ m: 2 }}
@@ -39,16 +39,17 @@ export default function LandingPage(props: any) {
             label="Game Code"
             variant="outlined"
             name="gamecode"
-            onChange={e => setName(e.target.value)} 
+            onChange={e => setGameCode(e.target.value)} 
           />
+          <Link to={'JoinGame'}>
           <Button 
             sx={{ m: 2 }}
             onClick={joinGame}
             variant="contained"
             size="large">
-            Join Game</Button>
+            Join Game</Button></Link>
           <Typography variant="subtitle1" color="black">--------or--------</Typography>
-          <Link to={`NewPage`}>
+          <Link to={`NewGame`}>
           <Button
             sx={{ m: 2 }}
             onClick={isNewGame}
