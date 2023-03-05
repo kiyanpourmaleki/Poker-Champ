@@ -45,7 +45,8 @@ export default function LandingPage(props: any) {
               onChange={e => setGameCode(e.target.value)} 
             />
             <Link to='JoinGame' state={{playername:name, gamecode:gamecode}}>
-            <Button 
+            <Button
+              disabled={!name || !gamecode} 
               sx={{ m: 2 }}
               onClick={joinGame}
               variant="contained"
