@@ -1,10 +1,9 @@
 import './JoinGame.css';
 import { Typography, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
-import * as React from 'react';
+import { Link, Route, Routes, useLocation} from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Unstable_Grid2';
+import Navbar from '../../components/navbar';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -14,44 +13,28 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-function GoBack(){
-    return(
-        <Link to="/">
-        <Button
-            sx={{ m: 2 }}
-            variant="contained"
-            size="large">
-            Go Back</Button></Link>
-    );
-}
 
-export default function DisplayNewGame() {
+export default function DisplayNewGame(props: any) {
+
+    const test = () => {
+        alert(`Name: ${name} \nGamecode: ${gamecode}`)
+    }
+
+    const location = useLocation()
+    const name  = location.state.playername
+    const gamecode = location.state.gamecode
     return(
         <div className="backgroundImage2">
-            <header className="New-Game-Header">
-                <Typography variant="h3" color="white">
-                    Join Game!</Typography>
-                <GoBack />
-            </header>
-
-            <div className='table'>
-                <Grid container spacing={3} sx={{ flexGrow: 1 }}>
-                <Grid xs={6} xsOffset={3} md={2} mdOffset={0}>
-                    <Item>1</Item>
-                </Grid>
-                <Grid xs={4} md={2} mdOffset="auto">
-                    <Item>2</Item>
-                </Grid>
-                <Grid xs={4} xsOffset={4} md={2} mdOffset={0}>
-                    <Item>3</Item>
-                </Grid>
-                <Grid xs md={6} mdOffset={2}>
-                    <Item>4</Item>
-                </Grid>
-            </Grid>
-
-            </div>
+            <Navbar status='in game'/>
+            <Button
+            sx={{ m: 2 }}
+            onClick={test}
+            variant="contained"
+            size="large">
+            Test</Button>
             
+            <div className='table'>
+            </div>
         </div>
 
         
