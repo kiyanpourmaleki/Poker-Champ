@@ -1,0 +1,16 @@
+.backgroundImage2 {
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    position:fixed;
+}
+
+.table{
+    background-image: url("./poker_table.jpg");
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    position:fixed;
+    background-position: center top;
+    background-size: 100%;
+}

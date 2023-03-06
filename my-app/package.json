@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.8",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -15,7 +16,12 @@
     "@types/react-dom": "^18.0.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+<<<<<<< HEAD
     "react-scripts": "^5.0.1",
+=======
+    "react-router-dom": "^6.8.1",
+    "react-scripts": "5.0.1",
+>>>>>>> main
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
