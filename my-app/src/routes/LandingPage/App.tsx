@@ -23,7 +23,7 @@ export default function LandingPage(props: any) {
 
   return (
     <>
-      <Navbar status='not logged in'/>
+      <Navbar status='home'/>
       <div className="backgroundImage">
         <header className="App-header">
           <Typography variant="h4" color="black">WELCOME TO</Typography>

@@ -13,17 +13,6 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-function GoBack(){
-    return(
-        <Link to="/">
-        <Button
-            sx={{ m: 2 }}
-            variant="contained"
-            size="large">
-            Go Back</Button>
-        </Link>
-    );
-}
 
 export default function DisplayNewGame(props: any) {
 
@@ -36,8 +25,7 @@ export default function DisplayNewGame(props: any) {
     const gamecode = location.state.gamecode
     return(
         <div className="backgroundImage2">
-            <Navbar status='logged in'/>
-            <GoBack />
+            <Navbar status='in game'/>
             <Button
             sx={{ m: 2 }}
             onClick={test}
