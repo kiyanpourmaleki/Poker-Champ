@@ -1,5 +1,7 @@
 // enum for types (suits)
 // testing
+import { Component} from 'react';
+
 enum Suit { 
     Spades,
     Clubs,
