@@ -36,18 +36,42 @@ export default function DisplayNewPage() {
 
             <div className='table'>
                 <Grid container spacing={3} sx={{ flexGrow: 1 }}>
-                <Grid xs={6} xsOffset={3} md={2} mdOffset={0}>
-                    <Item>1</Item>
-                </Grid>
-                <Grid xs={4} md={2} mdOffset="auto">
-                    <Item>2</Item>
-                </Grid>
-                <Grid xs={4} xsOffset={4} md={2} mdOffset={0}>
-                    <Item>3</Item>
-                </Grid>
-                <Grid xs md={6} mdOffset={2}>
-                    <Item>4</Item>
-                </Grid>
+                <div className='topLayer'>
+                    <Grid xs={6} xsOffset={3} md={2} mdOffset={0}>
+                        <Item>1</Item>
+                    </Grid>
+                    <Grid xs={4} md={2} mdOffset="auto">
+                        <Item>2</Item>
+                    </Grid>
+                    <Grid xs={4} xsOffset={4} md={2} mdOffset={0}>
+                        <Item>3</Item>
+                    </Grid>
+                </div>
+                <div className='midLayer'>
+                    <Grid xs md={3} mdOffset={2}>
+                        <Item>4</Item>
+                    </Grid>
+                    <Grid xs md={3} mdOffset={2}>
+                        <Item>Cards</Item>
+                    </Grid>
+                    <Grid xs md={3} mdOffset={2}>
+                        <Item>Pot</Item>
+                    </Grid>
+                    <Grid xs md={3} mdOffset={2}>
+                        <Item>5</Item>
+                    </Grid>
+                </div>
+                <div className='bottomLayer'>
+                    <Grid xs md={3} mdOffset={2}>
+                        <Item>6</Item>
+                    </Grid>
+                    <Grid xs md={3} mdOffset={2}>
+                        <Item>7</Item>
+                    </Grid>
+                    <Grid xs md={3} mdOffset={2}>
+                        <Item>8</Item>
+                    </Grid>
+                </div>
             </Grid>
 
             </div>
