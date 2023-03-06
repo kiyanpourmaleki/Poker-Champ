@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import './App.css';
+import './LandingPage.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
@@ -44,22 +44,35 @@ export default function LandingPage(props: any) {
               name="gamecode"
               onChange={e => setGameCode(e.target.value)} 
             />
-            <Link to='JoinGame' state={{playername:name, gamecode:gamecode}}>
             <Button
               disabled={!name || !gamecode} 
               sx={{ m: 2 }}
               onClick={joinGame}
               variant="contained"
-              size="large">
-              Join Game</Button></Link>
+              size="large"
+            >
+              <Link 
+                to='JoinGame' 
+                style={{textDecoration: 'none', color: 'white'}} 
+                state={{playername:name, gamecode:gamecode}}
+              >
+                Join Game
+              </Link>
+            </Button>
             <Typography variant="subtitle1" color="black">--------or--------</Typography>
-            <Link to={`NewGame`}>
             <Button
               sx={{ m: 2 }}
               onClick={isNewGame}
               variant="contained"
-              size="large">
-              Start New Game</Button></Link>
+              size="large"
+            >
+              <Link
+                to={`NewGame`}
+                style={{textDecoration: 'none', color: 'white'}}
+              >
+                Start New Game
+              </Link>
+            </Button>
         </header>
       </div>
     </>   

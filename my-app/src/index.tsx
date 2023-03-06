@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
-import LandingPage from "./routes/LandingPage/App";
+import LandingPage from "./routes/LandingPage/LandingPage";
 import DisplayNewGame from './routes/NewGame/NewGame';
 import DisplayJoinGame from './routes/JoinGame/JoinGame';
 

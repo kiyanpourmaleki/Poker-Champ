@@ -47,7 +47,7 @@ export default function Navbar(props: any) {
                         'aria-labelledby': 'basic-button',
                         }}>
                         <div>
-                            {props.status != 'home' ? <MenuItem><Link to="/">Return to Home</Link></MenuItem> : <MenuItem>Home</MenuItem>}
+                            {props.status != 'home' ? <MenuItem><Link to="/" style={{textDecoration: 'none', color: 'black'}}>Return to Home</Link></MenuItem> : <MenuItem>Home</MenuItem>}
                         </div>
                         </Menu>
                     </IconButton>
