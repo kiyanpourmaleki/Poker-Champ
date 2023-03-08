@@ -6,23 +6,28 @@ import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
+import Signin from './routes/signin/signin';
 import LandingPage from "./routes/LandingPage/LandingPage";
 import DisplayNewGame from './routes/NewGame/NewGame';
 import DisplayJoinGame from './routes/JoinGame/JoinGame';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <LandingPage />,
+    path: "/LandingPage",
+    element: <LandingPage />
   },
   {
-    path: "NewGame",
-    element: <DisplayNewGame />,
+    path: "/NewGame",
+    element: <DisplayNewGame />
   },
   {
-    path: "JoinGame",
+    path: "/JoinGame",
     element: <DisplayJoinGame />
   },
+  {
+    path: '/',
+    element: <Signin/>
+  }
 ]);
 
 const root = ReactDOM.createRoot(

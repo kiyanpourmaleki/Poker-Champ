@@ -24,18 +24,20 @@ export default function DisplayNewGame(props: any) {
     const name  = location.state.playername
     const gamecode = location.state.gamecode
     return(
-        <div className="backgroundImage2">
-            <Navbar status='in game'/>
-            <Button
-            sx={{ m: 2 }}
-            onClick={test}
-            variant="contained"
-            size="large">
-            Test</Button>
-            
-            <div className='table'>
+        <body>
+            <div className="backgroundImage2">
+                <Navbar status='in game'/>
+                <Button
+                sx={{ m: 2 }}
+                onClick={test}
+                variant="contained"
+                size="large">
+                Test</Button>
+                
+                <div className='table'>
+                </div>
             </div>
-        </div>
+        </body>
 
         
     );

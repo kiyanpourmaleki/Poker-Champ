@@ -16,12 +16,12 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function DisplayNewGame() {
     return(
-        <div className="backgroundImage2">
-            <Navbar status='new game'/>
-            <div className='table'></div>
-            
-        </div>
-
-        
+        <body>
+            <div className="backgroundImage2">
+                <Navbar status='new game'/>
+                <div className='table'></div>
+                
+            </div>
+        </body>
     );
 }

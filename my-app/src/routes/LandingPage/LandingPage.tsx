@@ -5,9 +5,11 @@ import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/navbar';
+import { useLocation } from 'react-router-dom';
 
 export default function LandingPage(props: any) {
-  const [ name, setName] = useState("")
+  const location = useLocation()
+  const [ username, setUsername ] = location.state.username
   const [ gamecode, setGameCode] = useState("")
   const [ newGame, setNewGame ] = useState("");
   const [ existingGame, setExistingGame ] = useState("");
@@ -18,11 +20,13 @@ export default function LandingPage(props: any) {
 
   const joinGame = () => {
       setExistingGame(existingGame)
-      alert(`Name: ${name} \nGamecode: ${gamecode}`)
+      alert(`Name: ${username} \nGamecode: ${gamecode}`)
   }
 
   return (
-    <>
+    <body>
+      <button onClick={joinGame}></button>
+    <div style={{width: '100%', height: 'auto', top: '0px', bottom: '0px', left: '0' }}>
       <Navbar status='home'/>
       <div className="backgroundImage">
         <header className="App-header">
@@ -34,7 +38,7 @@ export default function LandingPage(props: any) {
               label="Name"
               variant="outlined"
               name="name"
-              onChange={e => setName(e.target.value)} 
+              onChange={e => setUsername(e.target.value)} 
             />
             <TextField
               sx={{ m: 2 }}
@@ -45,16 +49,16 @@ export default function LandingPage(props: any) {
               onChange={e => setGameCode(e.target.value)} 
             />
             <Button
-              disabled={!name || !gamecode} 
+              disabled={!username || !gamecode} 
               sx={{ m: 2 }}
               onClick={joinGame}
               variant="contained"
               size="large"
             >
               <Link 
-                to='JoinGame' 
+                to='/JoinGame' 
                 style={{textDecoration: 'none', color: 'white'}} 
-                state={{playername:name, gamecode:gamecode}}
+                state={{playername:username, gamecode:gamecode}}
               >
                 Join Game
               </Link>
@@ -67,7 +71,7 @@ export default function LandingPage(props: any) {
               size="large"
             >
               <Link
-                to={`NewGame`}
+                to='/NewGame'
                 style={{textDecoration: 'none', color: 'white'}}
               >
                 Start New Game
@@ -75,6 +79,7 @@ export default function LandingPage(props: any) {
             </Button>
         </header>
       </div>
-    </>   
+    </div>   
+    </body>
   );
 }
