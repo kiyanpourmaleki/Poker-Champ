@@ -8,7 +8,7 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyB7MwV8Gww1ko0rbaZOgYBEyu-eX4cSjpg",
+  apiKey: "",
   authDomain: "poker-champ-76c0e.firebaseapp.com",
   projectId: "poker-champ-76c0e",
   storageBucket: "poker-champ-76c0e.appspot.com",
