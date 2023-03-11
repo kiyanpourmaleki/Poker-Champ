@@ -4,17 +4,13 @@ import { Link, Route, Routes, useLocation} from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Navbar from '../../components/navbar';
+import React from 'react';
+import cardBack from './Card_Back.jpg'
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
 
 
 export default function DisplayNewGame(props: any) {
+    
 
     const test = () => {
         alert(`Name: ${name} \nGamecode: ${gamecode}`)
@@ -25,15 +21,22 @@ export default function DisplayNewGame(props: any) {
     const gamecode = location.state.gamecode
     return(
         <div className="backgroundImage2">
-            <Navbar status='in game'/>
-            <Button
-            sx={{ m: 2 }}
-            onClick={test}
-            variant="contained"
-            size="large">
-            Test</Button>
-            
-            <div className='table'>
+            <Navbar status='in game'/>            
+            <div className='tableJ'>
+                <Typography variant='h2' color='white'>{gamecode}</Typography>
+                <div className='comunityCards'>
+                    <img src={cardBack} alt="Back of Cards" />
+                    <img src={cardBack} alt="Back of Cards" />
+                    <img src={cardBack} alt="Back of Cards" />
+                    <img src={cardBack} alt="Back of Cards" />
+                    <img src={cardBack} alt="Back of Cards" />
+                </div>
+                <div className='pot'>
+                    <Typography variant="h1" color="black">POT</Typography>
+                </div>
+                <div className='you'>
+                    <Typography variant='h4' color='white'>{name}</Typography>
+                </div>
             </div>
         </div>
 
