@@ -4,6 +4,18 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Lobby from '../../lobby';
+import { io } from 'socket.io-client';
+
+const socket = io("http://localhost:8080");
+
+socket.on('connect', () => {
+  console.log(`Connected as ${socket.id}`);
+});
+
+socket.on('rooms', (rooms) => {
+  console.log(`Received list of rooms: ${JSON.stringify(rooms)}`);
+});
 
 export default function LandingPage(props: any) {
   const [ name, setName] = useState("")
@@ -13,11 +25,13 @@ export default function LandingPage(props: any) {
 
   const isNewGame = () => {
       setNewGame(newGame);
+      socket.emit("Create room");
   }
 
   const joinGame = () => {
       setExistingGame(existingGame)
       alert(`Name: ${name} \nGamecode: ${gamecode}`)
+      socket.emit('Join room');
   }
 
   return (
@@ -56,6 +70,7 @@ export default function LandingPage(props: any) {
             variant="contained"
             size="large">
             Start New Game</Button></Link>
+          
       </header>
     </div>    
   );
