@@ -1,6 +1,6 @@
 import './signin.css'; 
 import React, {useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import {  Link, useNavigate } from 'react-router-dom';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
 import { auth } from '../../firebase';
@@ -13,6 +13,8 @@ const Signin = () => {
     const [ email, setEmail ] = useState('')
     const [password, setPassword ] = useState('');
     const [ name, setName ] = useState('');
+
+
  
     const onSubmit = (e: any) => {
       e.preventDefault()
@@ -38,7 +40,7 @@ const Signin = () => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            navigate("/LandingPage")
+            navigate("/LandingPage", {state: {username:email}})
             console.log(user);
         })
         .catch((error) => {
@@ -61,26 +63,19 @@ const Signin = () => {
                     <input
                         type="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}  
+                        onChange={e => setEmail(e.target.value)}  
                         required                                    
                         placeholder="Email address"                                
                     ></input>
                     <input
-                        type="userid"
-                        value={name}
-                        onChange={e => setName(e.target.value)} 
-                        required                                    
-                        placeholder="Username"                                
-                    ></input>
-                    <input
                         type="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)} 
+                        onChange={e => setPassword(e.target.value)} 
                         required                                 
                         placeholder="Password"              
                     ></input>
                     <button
-                        disabled={!email || !password || !name} 
+                        disabled={!email || !password} 
                         type="submit" 
                         onClick={onSubmit}                        
                     >  
@@ -100,7 +95,7 @@ const Signin = () => {
                         type="email"                                    
                         required                                                                                
                         placeholder="Email address"
-                        onChange={(e)=>setEmail(e.target.value)}
+                        onChange={e => setEmail(e.target.value)}
                     />
                 </div>
 
@@ -111,20 +106,15 @@ const Signin = () => {
                         type="password"                                    
                         required                                                                                
                         placeholder="Password"
-                        onChange={(e)=>setPassword(e.target.value)}
+                        onChange={e => setPassword(e.target.value)}
                     />
                 </div>
                                     
                 <div>
-                    <button    
-                                                    
-                        onClick={onLogin}                                        
-                    >      
-                        <Link to="/LandingPage" 
-                            style={{textDecoration: 'none', color: 'white'}} 
-                            state={{username:name}}>
-                                Login
-                        </Link>
+                    <button onClick={onLogin}
+                        style={{textDecoration: 'none', color: 'white'}} 
+                        >
+                        Login
                     </button>
                 </div>                               
             </form>

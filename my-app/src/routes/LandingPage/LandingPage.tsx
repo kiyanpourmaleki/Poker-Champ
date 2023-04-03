@@ -25,61 +25,53 @@ export default function LandingPage(props: any) {
 
   return (
     <body>
-      <button onClick={joinGame}></button>
-    <div style={{width: '100%', height: 'auto', top: '0px', bottom: '0px', left: '0' }}>
-      <Navbar status='home'/>
-      <div className="backgroundImage">
-        <header className="App-header">
-          <Typography variant="h4" color="black">WELCOME TO</Typography>
-          <Typography variant="h1" color="black">POKER CHAMP</Typography>
-            <TextField 
-              sx={{ m: 2 }}
-              id="outlined-basic"
-              label="Name"
-              variant="outlined"
-              name="name"
-              onChange={e => setUsername(e.target.value)} 
-            />
-            <TextField
-              sx={{ m: 2 }}
-              id="outlined-basic"
-              label="Game Code"
-              variant="outlined"
-              name="gamecode"
-              onChange={e => setGameCode(e.target.value)} 
-            />
-            <Button
-              disabled={!username || !gamecode} 
-              sx={{ m: 2 }}
-              onClick={joinGame}
-              variant="contained"
-              size="large"
-            >
-              <Link 
-                to='/JoinGame' 
-                style={{textDecoration: 'none', color: 'white'}} 
-                state={{playername:username, gamecode:gamecode}}
+      <div style={{width: '100%', height: 'auto', top: '0px', bottom: '0px', left: '0' }}>
+        <Navbar status='home' user={location.state.username}/>
+        <div className="backgroundImage">
+          <header className="App-header">
+            <Typography variant="h4" color="black">WELCOME TO</Typography>
+            <Typography variant="h1" color="black">POKER CHAMP</Typography>
+              
+              <TextField
+                sx={{ m: 10 }}
+                id="outlined-basic"
+                label="Game Code"
+                variant="outlined"
+                name="gamecode"
+                onChange={e => setGameCode(e.target.value)} 
+              />
+              <Button
+                disabled={!gamecode} 
+                sx={{ m: 2 }}
+                onClick={joinGame}
+                variant="contained"
+                size="large"
               >
-                Join Game
-              </Link>
-            </Button>
-            <Typography variant="subtitle1" color="black">--------or--------</Typography>
-            <Button
-              sx={{ m: 2 }}
-              onClick={isNewGame}
-              variant="contained"
-              size="large"
-            >
-              <Link
-                to='/NewGame'
-                style={{textDecoration: 'none', color: 'white'}}
+                <Link 
+                  to='/JoinGame' 
+                  style={{textDecoration: 'none', color: 'white'}} 
+                  state={{playername:username, gamecode:gamecode}}
+                >
+                  Join Game
+                </Link>
+              </Button>
+              <Typography variant="subtitle1" color="black">--------or--------</Typography>
+              <Button
+                sx={{ m: 2 }}
+                onClick={isNewGame}
+                variant="contained"
+                size="large"
               >
-                Start New Game
-              </Link>
-            </Button>
-        </header>
-      </div>
-    </div>   
+                <Link
+                  to='/NewGame'
+                  style={{textDecoration: 'none', color: 'white'}}
+                >
+                  Start New Game
+                </Link>
+              </Button>
+          </header>
+        </div>
+      </div>   
     </body>
   );
 }
