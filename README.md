@@ -5,5 +5,5 @@
           width="350"
           height="250">
 </p>
-<h2>You've got to know when to hold 'em</h2>
-<h2>Know when to fold 'em</h2>
+<h2>You've got to know when to hold 'em,</h2>
+<h2>and know when to fold 'em</h2>
