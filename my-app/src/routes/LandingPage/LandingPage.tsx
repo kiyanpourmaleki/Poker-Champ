@@ -5,8 +5,12 @@ import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/navbar';
+import Test_Client from '../../test_client';
 
 export default function LandingPage(props: any) {
+  //create web socket (hopefully)
+  Test_Client();
+
   const [ name, setName] = useState("")
   const [ gamecode, setGameCode] = useState("")
   const [ newGame, setNewGame ] = useState("");

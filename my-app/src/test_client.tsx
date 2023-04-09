@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import WebSocket from 'ws';
+//import WebSocket from 'ws';
 
 export default function Test_Client() {
     useEffect(() => {
@@ -10,7 +10,7 @@ export default function Test_Client() {
             sock.send("hello world");
         };
 
-        sock.onmessage = (event: WebSocket.MessageEvent) => {
+        sock.onmessage = (event: MessageEvent) => {
             console.log(`Received message from server: {event.data}`);
         };
 
