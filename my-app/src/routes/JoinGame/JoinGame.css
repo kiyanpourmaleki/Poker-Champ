@@ -37,4 +37,11 @@ img{
     position: absolute;
     top: 80%;
     left: 48%;
+    display: flex;
+}
+
+.playerCards{
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
 }
