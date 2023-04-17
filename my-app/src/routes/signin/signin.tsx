@@ -1,4 +1,5 @@
 import './signin.css'; 
+<<<<<<< HEAD
 import React, {useEffect, useState} from 'react';
 import { auth, db } from '../../firebase';
 import { signInWithEmailAndPassword, 
@@ -8,6 +9,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { collection, addDoc } 
   from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+=======
+import React, {useState} from 'react';
+import {  Link, useNavigate } from 'react-router-dom';
+import {  createUserWithEmailAndPassword  } from 'firebase/auth';
+import {  signInWithEmailAndPassword   } from 'firebase/auth';
+import { auth } from '../../firebase';
+import { ref, set } from 'firebase/database';
+>>>>>>> 1c18b55af719a5dc9b8ba7459413e69058c6e60a
 
 const Signin = () => {
     const [ email, setEmail ] = useState('')
@@ -16,6 +25,50 @@ const Signin = () => {
     const [ name, setName ] = useState('');
 
     const navigate = useNavigate();
+<<<<<<< HEAD
+=======
+ 
+    const [ email, setEmail ] = useState('')
+    const [password, setPassword ] = useState('');
+    const [ name, setName ] = useState('');
+
+
+ 
+    const onSubmit = (e: any) => {
+      e.preventDefault()
+     
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user);
+            navigate("/LandingPage")
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+            // ..
+        });
+    }
+    const onLogin = (e: any) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            navigate("/LandingPage", {state: {username:email}})
+            console.log(user);
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+        });
+       
+    }
+>>>>>>> 1c18b55af719a5dc9b8ba7459413e69058c6e60a
 
     // useEffect(() => {
     //     if (loading) return;
@@ -68,6 +121,7 @@ return (
                         placeholder="Email address"                                
                     ></input>
                     <input
+<<<<<<< HEAD
                         type="name"
                         value={name}
                         onChange={e => setName(e.target.value)} 
@@ -75,6 +129,8 @@ return (
                         placeholder="Username"              
                     ></input>
                     <input
+=======
+>>>>>>> 1c18b55af719a5dc9b8ba7459413e69058c6e60a
                         type="password"
                         value={password}
                         onChange={e => setPassword(e.target.value)} 
@@ -118,7 +174,11 @@ return (
                 </div>
                                     
                 <div>
+<<<<<<< HEAD
                     <button onClick={() => logInWithEmailAndPassword(email, password)}
+=======
+                    <button onClick={onLogin}
+>>>>>>> 1c18b55af719a5dc9b8ba7459413e69058c6e60a
                         style={{textDecoration: 'none', color: 'white'}} 
                         >
                         Login

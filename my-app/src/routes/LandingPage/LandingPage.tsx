@@ -50,7 +50,11 @@ export default function LandingPage(props: any) {
   }
 
   return (
+<<<<<<< HEAD
     <>
+=======
+    <body>
+>>>>>>> 1c18b55af719a5dc9b8ba7459413e69058c6e60a
       <div style={{width: '100%', height: 'auto', top: '0px', bottom: '0px', left: '0' }}>
         <Navbar status='home' user={location.state.username}/>
         <div className="backgroundImage">
@@ -58,19 +62,27 @@ export default function LandingPage(props: any) {
             <Typography variant="h4" color="black">WELCOME TO</Typography>
             <Typography variant="h1" color="black">POKER CHAMP</Typography>
               
+<<<<<<< HEAD
               {/* <TextField
+=======
+              <TextField
+>>>>>>> 1c18b55af719a5dc9b8ba7459413e69058c6e60a
                 sx={{ m: 10 }}
                 id="outlined-basic"
                 label="Game Code"
                 variant="outlined"
                 name="gamecode"
                 onChange={e => setGameCode(e.target.value)} 
+<<<<<<< HEAD
               /> */}
               <p>Logged in as
                 <div>{name}</div>
                 <div>{user?.email}</div>
               </p>
 
+=======
+              />
+>>>>>>> 1c18b55af719a5dc9b8ba7459413e69058c6e60a
               <Button
                 disabled={!gamecode} 
                 sx={{ m: 2 }}
@@ -103,6 +115,10 @@ export default function LandingPage(props: any) {
           </header>
         </div>
       </div>   
+<<<<<<< HEAD
     </>
+=======
+    </body>
+>>>>>>> 1c18b55af719a5dc9b8ba7459413e69058c6e60a
   );
 }
