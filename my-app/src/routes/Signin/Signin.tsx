@@ -100,7 +100,7 @@ const Signin = () => {
                 </div>
             </div>
         </body>
-    )
+    );
 }
  
 export default Signin
