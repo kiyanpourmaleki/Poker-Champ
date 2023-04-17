@@ -1,56 +1,58 @@
 import './signin.css'; 
-import React, {useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import {  createUserWithEmailAndPassword  } from 'firebase/auth';
-import {  signInWithEmailAndPassword   } from 'firebase/auth';
-import { auth } from '../../firebase';
-import { ref, set } from 'firebase/database';
+import React, {useEffect, useState} from 'react';
+import { auth, db } from '../../firebase';
+import { signInWithEmailAndPassword, 
+    createUserWithEmailAndPassword } 
+    from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { collection, addDoc } 
+  from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
+    const [ email, setEmail ] = useState('')
+    const [ password, setPassword ] = useState('');
+   // const [user, loading, error] = useAuthState(auth);
+    const [ name, setName ] = useState('');
 
     const navigate = useNavigate();
- 
-    const [ email, setEmail ] = useState('')
-    const [password, setPassword ] = useState('');
-    const [ name, setName ] = useState('');
- 
-    const onSubmit = (e: any) => {
-      e.preventDefault()
-     
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            console.log(user);
-            navigate("/LandingPage")
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-            // ..
-        });
-    }
-    const onLogin = (e: any) => {
-        e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            navigate("/LandingPage")
-            console.log(user);
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
-        });
-       
-    }
 
-  return (
-    <body>
+    // useEffect(() => {
+    //     if (loading) return;
+    //     if (user) navigate("/dashboard");
+    //   }, [user, loading]);
+
+    const logInWithEmailAndPassword = async (email: any, password: any) => {
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          navigate("/LandingPage");
+        } catch (err) {
+          console.error(err);
+        }
+      };
+      const registerWithEmailAndPassword = async (name: any, email: any, password: any) => {
+        try {
+          const res = await createUserWithEmailAndPassword(auth, email, password);
+          const user = res.user;
+          console.log(`signed in as ${user}`);
+          navigate("/LandingPage")
+          await addDoc(collection(db, "users"), {
+            uid: user.uid,
+            name,
+            authProvider: "local",
+            email,
+          });
+        } catch (error: any) {
+          // const errorCode = error.code;
+          // const errorMessage = error.message;
+          // console.log(errorCode, errorMessage);
+          console.error(error);
+          alert(error.message);
+        }
+      };
+
+return (
+    <>
         <div className="main">
             <input type="checkbox" id='chk' aria-hidden='true'></input>
             <div className='signup'>
@@ -61,28 +63,28 @@ const Signin = () => {
                     <input
                         type="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}  
+                        onChange={e => setEmail(e.target.value)}  
                         required                                    
                         placeholder="Email address"                                
                     ></input>
                     <input
-                        type="userid"
+                        type="name"
                         value={name}
                         onChange={e => setName(e.target.value)} 
-                        required                                    
-                        placeholder="Username"                                
+                        required                                 
+                        placeholder="Username"              
                     ></input>
                     <input
                         type="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)} 
+                        onChange={e => setPassword(e.target.value)} 
                         required                                 
                         placeholder="Password"              
                     ></input>
                     <button
-                        disabled={!email || !password || !name} 
+                        disabled={!email || !password} 
                         type="submit" 
-                        onClick={onSubmit}                        
+                        onClick={() => registerWithEmailAndPassword(name, email, password)}                        
                     >  
                         Sign up                                
                     </button>                                             
@@ -100,7 +102,7 @@ const Signin = () => {
                         type="email"                                    
                         required                                                                                
                         placeholder="Email address"
-                        onChange={(e)=>setEmail(e.target.value)}
+                        onChange={e => setEmail(e.target.value)}
                     />
                 </div>
 
@@ -111,26 +113,21 @@ const Signin = () => {
                         type="password"                                    
                         required                                                                                
                         placeholder="Password"
-                        onChange={(e)=>setPassword(e.target.value)}
+                        onChange={e => setPassword(e.target.value)}
                     />
                 </div>
                                     
                 <div>
-                    <button    
-                                                    
-                        onClick={onLogin}                                        
-                    >      
-                        <Link to="/LandingPage" 
-                            style={{textDecoration: 'none', color: 'white'}} 
-                            state={{username:name}}>
-                                Login
-                        </Link>
+                    <button onClick={() => logInWithEmailAndPassword(email, password)}
+                        style={{textDecoration: 'none', color: 'white'}} 
+                        >
+                        Login
                     </button>
                 </div>                               
             </form>
             </div>
         </div>
-    </body>
+    </>
   )
 }
  
