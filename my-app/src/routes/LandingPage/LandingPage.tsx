@@ -33,9 +33,6 @@ export default function LandingPage(props: any) {
     fetchUserName();
   }, [user, error, loading, navigate]);
 
-
-  const location = useLocation()
-  const [ username, setUsername ] = location.state.username
   const [ gamecode, setGameCode] = useState("")
   const [ newGame, setNewGame ] = useState("");
   const [ existingGame, setExistingGame ] = useState("");
@@ -46,13 +43,13 @@ export default function LandingPage(props: any) {
 
   const joinGame = () => {
       setExistingGame(existingGame)
-      alert(`Name: ${username} \nGamecode: ${gamecode}`)
+      alert(`Name: ${name} \nGamecode: ${gamecode}`)
   }
 
   return (
     <body>
       <div style={{width: '100%', height: 'auto', top: '0px', bottom: '0px', left: '0' }}>
-        <Navbar status='home' user={location.state.username}/>
+        <Navbar status='home' user={name}/>
         <div className="backgroundImage">
           <header className="App-header">
             <Typography variant="h4" color="black">WELCOME TO</Typography>
@@ -81,7 +78,7 @@ export default function LandingPage(props: any) {
                 <Link 
                   to='/JoinGame' 
                   style={{textDecoration: 'none', color: 'white'}} 
-                  state={{playername:username, gamecode:gamecode}}
+                  state={{playername:name, gamecode:gamecode}}
                 >
                   Join Game
                 </Link>

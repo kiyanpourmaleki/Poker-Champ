@@ -25,11 +25,11 @@ const Signin = () => {
       }, [user, error, loading, navigate]);
 
     return (
-        <body>
+        <div className='body'>
             <div className="main">
                 <input type="checkbox" id='chk' aria-hidden='true'></input>
                 <div className='signup'>
-                    <form>
+                    <div>
                         <label htmlFor="chk">
                             Sign Up
                         </label>
@@ -55,16 +55,15 @@ const Signin = () => {
                             placeholder="Password"              
                         ></input>
                         <button
-                            disabled={!email || !password} 
-                            type="submit" 
+                            disabled={!email || !password}  
                             onClick={() => registerWithEmailAndPassword(name, email, password)}                        
                         >  
                             Sign up                                
                         </button>                                             
-                    </form>
+                    </div>
                 </div>
                 <div className='login'>
-                    <form>                                              
+                    <div>                                              
                         <div>
                             <label htmlFor="chk" aria-hidden="true">
                                 Login
@@ -96,10 +95,10 @@ const Signin = () => {
                                 Login
                             </button>
                         </div>                               
-                    </form>
+                    </div>
                 </div>
             </div>
-        </body>
+        </div>
     );
 }
  
