@@ -7,7 +7,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../../components/navbar';
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db, logout } from "../../firebase";
+import { auth, db } from "../../firebase";
 
 export default function LandingPage(props: any) {
 
@@ -49,7 +49,7 @@ export default function LandingPage(props: any) {
   return (
     <body>
       <div style={{width: '100%', height: 'auto', top: '0px', bottom: '0px', left: '0' }}>
-        <Navbar status='home' user={name}/>
+        <Navbar page='home' status='logged in' user={name}/>
         <div className="backgroundImage">
           <header className="App-header">
             <Typography variant="h4" color="black">WELCOME TO</Typography>
@@ -65,7 +65,6 @@ export default function LandingPage(props: any) {
               /> */}
               <p>Logged in as
                 <div>{name}</div>
-                <div>{user?.email}</div>
               </p>
 
               <Button

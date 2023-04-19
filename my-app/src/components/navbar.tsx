@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../firebase';
 
 export default function Navbar(props: any) {
+    const user = props.user;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     
     const open = Boolean(anchorEl);
@@ -27,23 +28,53 @@ export default function Navbar(props: any) {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ backgroundColor: '#3D9970', borderBottom: 2, borderColor: '#2ECC40'}}>
                 <Toolbar>
-                    <button
-                    className='menuButton'
-                    onClick={handleClick}>
-                        <MenuIcon />
-                    </button>
-                    <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                    }}>
                     <div>
-                        {props.status != 'home' ? <MenuItem><Link to="/" style={{textDecoration: 'none', color: 'black'}}>Return to Home</Link></MenuItem> : <MenuItem onClick={logout}>Logout</MenuItem>}
+                        <IconButton
+                            className="menuButton"
+                            color="inherit"
+                            aria-label="menu"
+                            onClick={handleClick}
+                        >
+                            <MenuIcon />
+                        </IconButton>
                     </div>
-                    </Menu>
+                    <div className="menu">
+                        <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                        'aria-labelledby': 'basic-button',
+                        }}>
+                        
+                            {props.status != 'logged in' ? 
+                                <div>
+                                    <MenuItem onClick={logout}>
+                                        Logout
+                                    </MenuItem>
+                                    <MenuItem>
+                                        <p>{user}</p>
+                                    </MenuItem>
+                                </div> : 
+                                <div>
+                                <MenuItem onClick={logout}>
+                                    Logout
+                                </MenuItem>
+                                <MenuItem>
+                                    <p>{user}</p>
+                                </MenuItem>
+                                </div>
+                            }
+                            {props.page != "home" ? <MenuItem>
+                                                        <Link to="/" style={{textDecoration: 'none', color: 'black'}}>
+                                                            Return to Home
+                                                        </Link>
+                                                    </MenuItem> : <MenuItem>Home</MenuItem>
+                            }
+                                        
+                        </Menu>
+                    </div>
                     <p color="inherit">{props.status}</p>
                 </Toolbar>
             </AppBar>
