@@ -6,23 +6,28 @@ import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
+import Signin from './routes/Signin/Signin';
 import LandingPage from "./routes/LandingPage/LandingPage";
 import DisplayNewGame from './routes/NewGame/NewGame';
 import DisplayJoinGame from './routes/JoinGame/JoinGame';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <LandingPage />,
+    path: "/LandingPage",
+    element: <LandingPage />
   },
   {
-    path: "NewGame",
-    element: <DisplayNewGame />,
+    path: "/NewGame",
+    element: <DisplayNewGame />
   },
   {
-    path: "JoinGame",
+    path: "/JoinGame",
     element: <DisplayJoinGame />
   },
+  {
+    path: '/',
+    element: <Signin />
+  }
 ]);
 
 const root = ReactDOM.createRoot(
@@ -34,7 +39,4 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
