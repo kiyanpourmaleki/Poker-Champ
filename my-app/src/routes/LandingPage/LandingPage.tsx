@@ -68,7 +68,7 @@ export default function LandingPage(props: any) {
               </p>
 
               <Button
-                disabled={!gamecode} 
+                // disabled={!gamecode} 
                 sx={{ m: 2 }}
                 onClick={joinGame}
                 variant="contained"
