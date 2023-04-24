@@ -19,6 +19,9 @@
     position: absolute;
     top: 32%;
     left: 31%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
 }
 
 img{

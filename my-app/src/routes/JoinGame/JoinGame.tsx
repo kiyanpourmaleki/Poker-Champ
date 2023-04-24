@@ -30,7 +30,8 @@ type Deal = {
 
 
 export default function DisplayNewGame(props: any): JSX.Element {
-    const [cards, setCard] = useState<Card[]>([])
+    const [pCards, setPCard] = useState<Card[]>([]) //player cards
+    const [cCards, setCCard] = useState<Card[]>([]) //community cards
 
 
     const location = useLocation();
@@ -57,7 +58,7 @@ export default function DisplayNewGame(props: any): JSX.Element {
     function test() {
         alert(`Name: ${name} \nGamecode: ${gamecode}`);
     }
-    
+
     console.log(deck);
 
     const dealPlayer = () => {
@@ -79,13 +80,53 @@ export default function DisplayNewGame(props: any): JSX.Element {
         
         //console.log(cards);
         cards.then(info => { console.log(info);
-            setCard(info.cards);});
+            setPCard(info.cards);});
         cards.catch(bad => {console.log(bad);})
-
-
     }
 
-    
+    const dealFlop = () => {
+        function dealToCommunity(): Promise<Deal> {
+            return new Promise<Deal>(async (resolve, reject) => {
+                let apiCall = "https://deckofcardsapi.com/api/deck/" + deckID + "/draw/?count=3"
+                const response = await fetch(apiCall);
+                if (response.ok){
+                    let cardsInfo: Deal = await response.json();
+                    resolve(cardsInfo)
+                }
+                else{reject("Didn't Work")}
+            })
+        }
+        
+        let cards = dealToCommunity();
+        
+        //console.log(cards);
+        cards.then(info => { console.log(info);
+            setCCard(info.cards);});
+        cards.catch(bad => {console.log(bad);})
+    }
+
+    const dealTurnRiver = () => {
+        function dealToCommunity(): Promise<Deal> {
+            return new Promise<Deal>(async (resolve, reject) => {
+                let apiCall = "https://deckofcardsapi.com/api/deck/" + deckID + "/draw/?count=1"
+                const response = await fetch(apiCall);
+                if (response.ok){
+                    let cardsInfo: Deal = await response.json();
+                    resolve(cardsInfo)
+                }
+                else{reject("Didn't Work")}
+            })
+        }
+
+        let card = dealToCommunity();
+        
+        //console.log(cards);
+        card.then(info => { setCCard((prevState) => ([
+            ...prevState,
+            ...info.cards
+        ]))})
+        card.catch(bad => {console.log(bad);})
+    }
 
     return(
         <div className="backgroundImage2">
@@ -93,18 +134,21 @@ export default function DisplayNewGame(props: any): JSX.Element {
             <div className='tableJ'>
                 <Typography variant='h2' color='white'>{gamecode}</Typography>
                 <div className='comunityCards'>
-                    <img src={cardBack} alt="Back of Cards" />
-                    <img src={cardBack} alt="Back of Cards" />
-                    <img src={cardBack} alt="Back of Cards" />
-                    <img src={cardBack} alt="Back of Cards" />
-                    <img src={cardBack} alt="Back of Cards" />
+                    {cCards.map(card => (
+                        <div className='playerCards'>
+                           <img src={card.image} height={50}/>
+                        </div>
+                    ))}
+                    <button onClick={dealFlop}>Flop</button>
+                    <button onClick={dealTurnRiver}>Turn</button>
+                    <button onClick={dealTurnRiver}>River</button>
                 </div>
                 <div className='pot'>
                     <Typography variant="h1" color="black">POT</Typography>
                 </div>
                 <div className='you'>
                     <Typography variant='h4' color='white'>{name}</Typography>
-                    {cards.map(card => (
+                    {pCards.map(card => (
                         <div className='playerCards'>
                            <img src={card.image} height={50}/>
                         </div>
